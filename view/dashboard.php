@@ -51,14 +51,16 @@ date_default_timezone_set('Europe/Paris');
                                 <!-- Commentary interface -->
                                 <!-------------------------->
                                 <?php
-                                echo "<form class='comments' method='POST' action='" . setComments() . "'>
+                                echo "<form class='comments' method='POST' action='" . setComments($db) . "'>
                                         <input type='hidden' name='uid' value='Anonymous'>
-                                        <input type='hidden' name='date' value='" . date('d-m-Y H:i:s') . "'>
+                                        <input type='hidden' name='date' value='" . date('Y-m-d H:i:s') . "'>
                                         <textarea name='message' id='' cols='30' rows='10' placeholder='Écrire un commentaire'></textarea><br>
                                         <button type='submit' name='commentSubmit' class='btn btn-primary'>Ajouter un commentaire</button>
-                                   </form>"
+                                   </form><br><br>";
+
+                                getComments($db);
                                 ?>
-                                
+
                             </div>
                         </div>
                     </div>
