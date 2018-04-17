@@ -55,7 +55,7 @@ date_default_timezone_set('Europe/Paris');
                                         <input type='hidden' name='uid' value='Anonymous'>
                                         <input type='hidden' name='date' value='" . date('Y-m-d H:i:s') . "'>
                                         <textarea name='message' id='' cols='30' rows='10' placeholder='Écrire un commentaire'></textarea><br>
-                                        <button type='submit' name='commentSubmit' class='btn btn-primary'>Ajouter un commentaire</button>
+                                        <button type='submit' name='commentSubmit' class='btn btn-success'>Ajouter un commentaire</button>
                                    </form><br><br>";
 
                                 getComments($db);
