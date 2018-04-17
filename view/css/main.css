@@ -437,6 +437,6 @@ p.account a {
 
 .edit-form {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 15px;
+    right: 20px;
 }

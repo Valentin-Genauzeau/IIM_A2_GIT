@@ -24,12 +24,12 @@ function getComments($db)
         echo $row['date'] . "<br><br>";
         echo "</i>";
         echo nl2br($row['message']);
-        echo "</p><form class='edit-form' method='POST' action='editcomment.php'>
-                    <input type='hidden' name='cid' value='" . $row['uid'] . "'>
+        echo "</p><form class='edit-form actionicon' method='POST' action='editcomment.php'>
+                    <input type='hidden' name='cid' value='" . $row['cid'] . "'>
                     <input type='hidden' name='uid' value='" . $row['uid'] . "'>
                     <input type='hidden' name='date' value='" . $row['date'] . "'>
                     <input type='hidden' name='message' value='" . $row['message'] . "'>
-                    <button class='btn btn-primary'>Éditer</button>
+                    <button>Éditer</button>
                   </form>
               </div>";
     }
@@ -38,11 +38,13 @@ function getComments($db)
 function editComments($db)
 {
     if (isset($_POST['commentSubmit'])) {
+        $cid = $_POST['cid'];
         $uid = $_POST['uid'];
         $date = $_POST['date'];
         $message = $_POST['message'];
 
-        $sql = "INSERT INTO comments(uid, date, message) VALUES ('$uid', '$date', '$message')";
+        $sql = "UPDATE comments SET message='$message' WHERE cid='$cid'";
         $result = $db->query($sql);
+        header("Location: dashboard.php");
     }
 }

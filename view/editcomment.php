@@ -16,6 +16,7 @@ date_default_timezone_set('Europe/Paris');
                 $message = $_POST['message'];
 
                 echo "<form class='comments' method='POST' action='" . editComments($db) . "'>
+                        <input type='hidden' name='cid' value='" . $cid . "'>
                         <input type='hidden' name='uid' value='" . $uid . "'>
                         <input type='hidden' name='date' value='" . $date . "'>
                         <textarea name='message'>" . $message . "</textarea><br>
