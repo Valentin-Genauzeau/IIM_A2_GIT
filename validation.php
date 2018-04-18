@@ -14,6 +14,7 @@ if(	isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if(isUsernameAvailable($db, $username)) {
         if(isEmailAvailable($db, $email)) {
             userRegistration($db, $username, $email, $passwordEncrypted);
+            header('Location: login.php');
         } else {
             $error = "Email indisponible";
         }
