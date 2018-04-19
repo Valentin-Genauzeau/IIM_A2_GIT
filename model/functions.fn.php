@@ -40,9 +40,9 @@ function userRegistration(PDO $db, $username, $email, $password)
 
     $req = $db->prepare($sql);
     $req->execute(array(
-        ':username' => $username,
-        ':email' => $email,
-        ':password' => $password,
+        'username' => $username,
+        'email' => $email,
+        'password' => $password,
     ));
 
 
