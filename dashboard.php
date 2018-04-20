@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('config/config.php');
+require('config/config-sample.php');
 require('model/functions.fn.php');
 
 /*===============================
@@ -8,8 +8,8 @@ require('model/functions.fn.php');
 ===============================*/
 
  if(!isset($_SESSION) OR empty($_SESSION)){
-	header('Location: login.php');
-	exit();
+	//  header('Location: login.php');
+	//  exit();
 }
 
 $musics = listMusics($db);

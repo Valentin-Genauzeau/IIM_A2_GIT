@@ -24,13 +24,18 @@ function getComments($db)
         echo $row['date'] . "<br><br>";
         echo "</i>";
         echo nl2br($row['message']);
-        echo "</p><form class='edit-form actionicon' method='POST' action='editcomment.php'>
+        echo "</p>
+                <form class='delete-form actionicon' method='POST' action='" . deleteComments($db) . "'>
+                    <input type='hidden' name='cid' value='" . $row['cid'] . "'>
+                    <button class='btn btn-danger' name='commentDelete' type='submit'>Supprimer</button>
+                </form>                                             
+                <form class='edit-form actionicon' method='POST' action='editcomment.php'>
                     <input type='hidden' name='cid' value='" . $row['cid'] . "'>
                     <input type='hidden' name='uid' value='" . $row['uid'] . "'>
                     <input type='hidden' name='date' value='" . $row['date'] . "'>
                     <input type='hidden' name='message' value='" . $row['message'] . "'>
-                    <button>Éditer</button>
-                  </form>
+                    <button class='btn btn-primary'>Éditer</button>
+                </form>
               </div>";
     }
 }
@@ -44,6 +49,17 @@ function editComments($db)
         $message = $_POST['message'];
 
         $sql = "UPDATE comments SET message='$message' WHERE cid='$cid'";
+        $result = $db->query($sql);
+        header("Location: dashboard.php");
+    }
+}
+
+function deleteComments($db)
+{
+    if (isset($_POST['commentDelete'])) {
+        $cid = $_POST['cid'];
+
+        $sql = "DELETE FROM comments WHERE cid='$cid'";
         $result = $db->query($sql);
         header("Location: dashboard.php");
     }
